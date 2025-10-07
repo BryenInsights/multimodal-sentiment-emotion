@@ -12,7 +12,7 @@ The goal of this repository is twofold:
 ## 🚀 Project Architecture  
 
 <p align="center">
-  <img src="assets/model-architecture.png" alt="Model Architecture Schema" width="600">
+  <img src="assets/model-architecture.png" alt="Model Architecture Schema" width="85%">
 </p>
 
 - **Text** → transcripts tokenized with BERT  
@@ -25,8 +25,9 @@ The goal of this repository is twofold:
 ## 🎥 Demo  
 
 <p align="center">
-  <img src="assets/saas-demo.gif" alt="SaaS Demo" width="700">
+  <img src="assets/saas-demo.gif" alt="SaaS Demo" width="85%">
 </p>
+
 ---
 
 ## 📂 Repository Structure  
@@ -109,6 +110,10 @@ python multimodal-model/train_sagemaker.py
 ```bash
 python multimodal-model/deployment/deploy_endpoint.py
 ```
+
+💡 Note:
+If you want to skip the training process (which costs around $15 on AWS),
+you can directly use the pre-trained normalized model weights — see the Results section below.
 
 ---
 
