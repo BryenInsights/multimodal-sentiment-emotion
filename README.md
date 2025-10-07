@@ -88,6 +88,30 @@ AWS_REGION=your-region
 S3_BUCKET=your-bucket
 SAGEMAKER_ENDPOINT=your-endpoint
 ```
+---
+
+## 🎈 Light Fine-Tuning for Faster Training
+
+To speed up training and reduce GPU costs, the base encoders (text, video, audio) were initialized with **pretrained weights** instead of training from scratch.
+
+Two configurations were compared:
+
+- **Full fine-tuning**: all encoder weights were trainable.  
+- **Frozen encoders (light fine-tuning)**: pretrained encoders were frozen, and only the fusion and classification layers were updated.
+
+
+This strategy dramatically reduced the number of trainable parameters from **~143M** to **~0.3M** while keeping strong pretrained representations.  
+(Counted using a small utility script [`count_parameters.py`](multimodal-model/training/count_parameters.py))
+
+<p align="center">
+  <img src="assets/params_full.png" alt="Parameter count - Full Fine-tuning" width="450">
+</p>
+
+<p align="center">
+  <img src="assets/params_frozen.png" alt="Parameter count - Frozen Encoders" width="450">
+</p>
+
+> 🔍 The frozen setup preserves the quality of the pretrained encoders (e.g., BERT for text, R3D-18 for video) while making training significantly lighter and more efficient.
 
 ---
 
@@ -133,7 +157,6 @@ This makes it harder for a model trained “as is” to learn the minority class
 Since training on AWS SageMaker costs about **$15 per run**, you can directly use the pre-trained **normalized model weights** here:  
 👉 [Download Normalized Model Weights](https://huggingface.co/PBryen/video-sentiment-model)  
 
----
 
 ### Test Set Performance  
 | Model              | Train Loss (final) | Val Loss (final) | Test Loss | Notes |
