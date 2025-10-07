@@ -103,13 +103,11 @@ Two configurations were compared:
 This strategy dramatically reduced the number of trainable parameters from **~143M** to **~0.3M** while keeping strong pretrained representations.  
 (Counted using a small utility script [`count_parameters.py`](multimodal-model/training/count_parameters.py))
 
-<p align="center">
-  <img src="assets/params_full.png" alt="Parameter count - Full Fine-tuning" width="450">
-</p>
+| **Full Fine-tuning (All Parameters Trainable)** | **Frozen Encoders (Light Fine-tuning)** |
+|:----------------------------------------------:|:--------------------------------------:|
+| <img src="assets/params_full.png" alt="Parameter count - Full Fine-tuning" width="450"> | <img src="assets/params_frozen.png" alt="Parameter count - Frozen Encoders" width="450"> |
 
-<p align="center">
-  <img src="assets/params_frozen.png" alt="Parameter count - Frozen Encoders" width="450">
-</p>
+<p align="center"><em>Comparison of trainable parameters before and after freezing model weights</em></p>
 
 > 🔍 The frozen setup preserves the quality of the pretrained encoders (e.g., BERT for text, R3D-18 for video) while making training significantly lighter and more efficient.
 
