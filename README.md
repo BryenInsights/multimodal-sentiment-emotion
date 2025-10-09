@@ -109,7 +109,7 @@ This strategy dramatically reduced the number of trainable parameters from **~14
 
 <p align="center"><em>Comparison of trainable parameters before and after freezing model weights</em></p>
 
-> 🔍 The frozen setup preserves the quality of the pretrained encoders (e.g., BERT for text, R3D-18 for video) while making training significantly lighter and more efficient.
+> 🔍 The frozen setup keeps the main pretrained encoders (e.g., BERT for text, R3D-18 for video, Audio CNN) mostly fixed, while only fine-tuning small adapter layers, fusion, and classifiers. This makes training much lighter and more efficient.
 
 ---
 
